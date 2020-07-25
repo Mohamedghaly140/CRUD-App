@@ -1,20 +1,52 @@
-var productNameInput = document.getElementById('productName');
-var productPriceInput = document.getElementById('productPrice');
-var productCategoryInput = document.getElementById('producCategory');
-var productDescInput = document.getElementById('productDesc');
+const productNameInput = document.getElementById('productName');
+const productPriceInput = document.getElementById('productPrice');
+const productCategoryInput = document.getElementById('producCategory');
+const productDescInput = document.getElementById('productDesc');
+const tableBody = document.getElementById('tableBody');
+
+let productList;
+
+if (localStorage.getItem('ourProducts') === null) {
+  productList = [];
+} else {
+  productList = JSON.parse(localStorage.getItem('ourProducts'));
+  displayProduct();
+}
 
 function addProduct() {
-  var product = {
+  let product = {
     name: productNameInput.value,
     price: productPriceInput.value,
     category: productCategoryInput.value,
     description: productDescInput.value,
   };
-  console.log(product);
+  productList.push(product);
+  localStorage.setItem('ourProducts', JSON.stringify(productList));
+  displayProduct();
+  clearForm();
 }
 
-let friends = ['ahmed', 'Ali', 'Duaa', 'Samaa', 'Mohamed'];
+function displayProduct() {
+  let tBody = '';
+  for (let i = 0; i < productList.length; i++) {
+    tBody += `
+      <tr>
+        <td>${i}</td>
+        <td>${productList[i].name}</td>
+        <td>${productList[i].price}</td>
+        <td>${productList[i].category}</td>
+        <td>${productList[i].description}</td>
+        <td><button class="btn btn-warning">Update</button></td>
+        <td><button class="btn btn-danger">Delete</button></td>
+      </tr>
+    `;
+  }
+  tableBody.innerHTML = tBody;
+}
 
-for (let i = 0; i < friends.length; i++) {
-  console.log(friends[i]);
+function clearForm() {
+  productNameInput.value = '';
+  productPriceInput.value = '';
+  productCategoryInput.value = '';
+  productDescInput.value = '';
 }
