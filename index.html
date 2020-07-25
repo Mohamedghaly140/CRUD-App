@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD App</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="py-4 text-center">
+      <h2 class="text-primary">Crud App</h2>
+    </header>
+    <div class="inputs py-5">
+        <!-- Product Name -->
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName" aria-describedby="emailHelp">
+      </div>
+      <!-- Product Price -->
+      <div class="form-group">
+        <label for="productPrice">Product Price</label>
+        <input type="number" class="form-control" id="productPrice" aria-describedby="emailHelp">
+      </div>
+      <!-- Product Category -->
+      <div class="form-group">
+        <label for="productCategory">Product Category</label>
+        <input type="text" class="form-control" id="producCategory" aria-describedby="emailHelp">
+      </div>
+      <!-- Product Description -->
+      <div class="form-group">
+        <label for="productDesc">Product Description</label>
+        <textarea type="text" class="form-control" id="productDesc" aria-describedby="emailHelp"  rows="6" style="resize: none;"></textarea>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <button onclick="addProduct()" type="submit" class="btn btn-primary">Add Product</button>
+        <button type="reset" class="btn btn-danger">Reset Fields</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <table class="table w-75 m-auto">
+      <thead>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </thead>
+    </table>
+  </div>
+</body>
+</html>
