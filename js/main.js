@@ -37,7 +37,7 @@ function displayProduct() {
         <td>${productList[i].category}</td>
         <td>${productList[i].description}</td>
         <td><button class="btn btn-warning">Update</button></td>
-        <td><button class="btn btn-danger">Delete</button></td>
+        <td><button onclick="deleteProduct(${i})" class="btn btn-danger">Delete</button></td>
       </tr>
     `;
   }
@@ -49,4 +49,10 @@ function clearForm() {
   productPriceInput.value = '';
   productCategoryInput.value = '';
   productDescInput.value = '';
+}
+
+function deleteProduct(index) {
+  productList.splice(index, 1);
+  localStorage.setItem('ourProducts', JSON.stringify(productList));
+  displayProduct();
 }
